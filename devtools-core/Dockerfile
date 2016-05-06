@@ -19,10 +19,11 @@ RUN echo "Brewing core devtools…" \
       htop \
       socat \
       tmux \
- && brew-docker-cleanup \
- && echo "#!/bin/bash \n\
+ && brew-docker-cleanup
+
+RUN echo "#!/bin/bash \n\
 source $HOMEBREW_PREFIX/set-path \n\
-exec /brew/bin/zsh --login \"\${@}\" \n\
+exec $HOMEBREW_PREFIX/bin/zsh --login -c \"\${@}\" \n\
 " > $HOMEBREW_PREFIX/enter \
  && chmod +x $HOMEBREW_PREFIX/enter \
  \

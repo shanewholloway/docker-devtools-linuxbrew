@@ -23,7 +23,7 @@ export INFOPATH=\"\$HOMEBREW_PREFIX/share/info:\$INFOPATH\" \n\
 \
  && echo "#!/bin/bash \n\
 source $HOMEBREW_PREFIX/set-path \n\
-exec /bin/bash --login \"\${@}\" \n\
+exec /bin/bash --login -c \"\${@}\" \n\
 " > $HOMEBREW_PREFIX/enter \
 \
  && echo "#!/bin/bash \n\
