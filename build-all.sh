@@ -18,6 +18,7 @@ echo ":: Building 'devtools-linuxbrew' chain" \
       -t shane/devtools-linuxbrew:tip-xenial \
       -t shane/devtools-linuxbrew:tip \
       -t shane/devtools-linuxbrew:latest \
+      -t devtools \
       ./devtools-tip \
   \
   && echo "\n\n:: Completed building 'devtools-linuxbrew' chain \n" \
