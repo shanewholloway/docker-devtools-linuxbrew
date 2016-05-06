@@ -1,5 +1,4 @@
 FROM shane/devtools-linuxbrew-base:xenial
-# TO IMAGE shane/devtools-linuxbrew-core:xenial
 
 RUN echo "Brewing core devtools…" \
  && brew install --build-from-source \
@@ -19,6 +18,9 @@ RUN echo "Brewing python3 (3.5+)…" \
 
 RUN echo "Brewing node (6.0+)…" \
  && brew install --build-from-source node
+
+MAINTAINER Shane Holloway <shane.holloway@ieee.org>
+# TO IMAGE shane/devtools-linuxbrew-core:xenial
 
 # Then in an inherited Dockerfile, add:
 #

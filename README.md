@@ -7,7 +7,7 @@ On Docker Hub at [shane/devtools-linuxbrew](https://hub.docker.com/r/shane/devto
 
 Make a named container using your `shane/devtools-linuxbrew` derived image:
 
-    docker run --name my_devtools shane/devtools-linuxbrew:tip
+    docker run --name my_devtools shane/devtools-linuxbrew-tip
 
 Then compose your devtool container using `--volumes-from my_devtools` which shares `/brew` between containers
 

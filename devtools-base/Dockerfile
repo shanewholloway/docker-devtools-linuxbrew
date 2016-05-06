@@ -1,10 +1,9 @@
 FROM ubuntu:xenial
-# TO IMAGE shane/devtools-linuxbrew-base:xenial
 
 RUN echo "Installing prereqs for Linuxbrew (http://linuxbrew.sh/)" \
  && export DEBIAN_FRONTEND=noninteractive \
  && apt-get update && apt-get install -q -y --no-install-recommends \
-      locales ca-certificates curl git build-essential ruby python-setuptools \
+      file locales ca-certificates curl git build-essential ruby python-setuptools \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
  && localedef -i en_US -f UTF-8 en_US.UTF-8 \
@@ -24,7 +23,7 @@ export INFOPATH=\"\$HOMEBREW_PREFIX/share/info:\$INFOPATH\" \n\
 \
  && echo "#!/bin/bash \n\
 source $HOMEBREW_PREFIX/set-path \n\
-exec /bin/bash --login \n\
+exec /bin/bash --login \"\${@}\" \n\
 " > $HOMEBREW_PREFIX/enter \
 \
  && chmod +x $HOMEBREW_PREFIX/set-path $HOMEBREW_PREFIX/enter \
@@ -36,3 +35,6 @@ RUN echo "Priming Linuxbrew installation…" \
  && brew update && brew doctor \
  && brew install --build-from-source pkg-config \
  && /bin/true
+
+MAINTAINER Shane Holloway <shane.holloway@ieee.org>
+# TO IMAGE shane/devtools-linuxbrew-base:xenial

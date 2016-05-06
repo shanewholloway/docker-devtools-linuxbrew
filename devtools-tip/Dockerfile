@@ -1,5 +1,4 @@
 FROM shane/devtools-linuxbrew-core:xenial
-# TO IMAGE shane/devtools-linuxbrew-tip:xenial
 
 RUN echo "Brewing rest of devtools…" \
  && python2 -m pip install pip --upgrade \
@@ -10,12 +9,13 @@ RUN echo "Brewing rest of devtools…" \
 
 RUN echo "#!/bin/bash \n\
 source $HOMEBREW_PREFIX/set-path \n\
-exec /brew/bin/zsh --login \n\
+exec /brew/bin/zsh --login \"\${@}\" \n\
 " > $HOMEBREW_PREFIX/enter \
-\
  && chmod +x $HOMEBREW_PREFIX/enter \
  && /bin/true
 
 VOLUME ["$HOMEBREW_PREFIX"]
 CMD ["/bin/true"]
 
+MAINTAINER Shane Holloway <shane.holloway@ieee.org>
+# TO IMAGE shane/devtools-linuxbrew-tip:xenial
