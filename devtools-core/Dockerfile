@@ -8,16 +8,19 @@ RUN echo "Brewing core devtools…" \
       htop \
       socat \
       tmux \
- && /bin/true
+ && brew-docker-cleanup
 
 RUN echo "Brewing python (2.7+)…" \
- && brew install --build-from-source python
+ && brew install --build-from-source python \
+ && brew-docker-cleanup
 
 RUN echo "Brewing python3 (3.5+)…" \
- && brew install --build-from-source python3
+ && brew install --build-from-source python3 \
+ && brew-docker-cleanup
 
 RUN echo "Brewing node (6.0+)…" \
- && brew install --build-from-source node
+ && brew install --build-from-source node \
+ && brew-docker-cleanup
 
 MAINTAINER Shane Holloway <shane.holloway@ieee.org>
 # TO IMAGE shane/devtools-linuxbrew-core:xenial

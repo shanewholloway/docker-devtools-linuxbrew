@@ -1,7 +1,7 @@
 #!/bin/sh
-echo ":: Building 'devtools-linuxbrew' chain" \
+echo ":: Building 'devtools-linuxbrew' chain ::\n" \
   \
-  && echo "\n\n:: Build 'devtools-linuxbrew:base' \n" \
+  && echo "\n\n:: Build 'devtools-linuxbrew:base' ::\n" \
   && docker build \
       -t shane/devtools-linuxbrew-base:xenial \
       -t shane/devtools-linuxbrew-base:latest \
@@ -10,7 +10,7 @@ echo ":: Building 'devtools-linuxbrew' chain" \
       -t shane/devtools-linuxbrew:base \
       ./devtools-base \
   \
-  && echo "\n\n:: Build 'devtools-linuxbrew:base' \n" \
+  && echo "\n\n:: Build 'devtools-linuxbrew:core' ::\n" \
   && docker build \
       -t shane/devtools-linuxbrew-core:xenial \
       -t shane/devtools-linuxbrew-core:latest \
@@ -19,7 +19,7 @@ echo ":: Building 'devtools-linuxbrew' chain" \
       -t shane/devtools-linuxbrew:core \
       ./devtools-core \
   \
-  && echo "\n\n:: Build 'devtools-linuxbrew:tip' \n" \
+  && echo "\n\n:: Build 'devtools-linuxbrew:tip' ::\n" \
   && docker build \
       -t shane/devtools-linuxbrew-tip:xenial \
       -t shane/devtools-linuxbrew-tip:latest \
@@ -30,5 +30,5 @@ echo ":: Building 'devtools-linuxbrew' chain" \
       -t devtools \
       ./devtools-tip \
   \
-  && echo "\n\n:: Completed building 'devtools-linuxbrew' chain \n" \
+  && echo "\n\n:: Completed building 'devtools-linuxbrew' chain ::\n" \
   && true

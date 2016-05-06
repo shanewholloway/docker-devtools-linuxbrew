@@ -26,7 +26,16 @@ source $HOMEBREW_PREFIX/set-path \n\
 exec /bin/bash --login \"\${@}\" \n\
 " > $HOMEBREW_PREFIX/enter \
 \
- && chmod +x $HOMEBREW_PREFIX/set-path $HOMEBREW_PREFIX/enter \
+ && echo "#!/bin/bash \n\
+$HOMEBREW_PREFIX/bin/brew cleanup \n\
+rm -rf \$($HOMEBREW_PREFIX/bin/brew --cache) \n\
+/bin/true \n\
+" > $HOMEBREW_PREFIX/bin/brew-docker-cleanup \
+\
+ && chmod +x \
+      $HOMEBREW_PREFIX/set-path \
+      $HOMEBREW_PREFIX/enter \
+      $HOMEBREW_PREFIX/bin/brew-docker-cleanup \
  && /bin/true
 
 ENV PATH="$HOMEBREW_PREFIX/bin:$PATH"
@@ -34,7 +43,7 @@ ENV PATH="$HOMEBREW_PREFIX/bin:$PATH"
 RUN echo "Priming Linuxbrew installation…" \
  && brew update && brew doctor \
  && brew install --build-from-source pkg-config \
- && /bin/true
+ && brew-docker-cleanup
 
 MAINTAINER Shane Holloway <shane.holloway@ieee.org>
 # TO IMAGE shane/devtools-linuxbrew-base:xenial
