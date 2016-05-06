@@ -1,5 +1,5 @@
 FROM ubuntu:xenial
-# TO IMAGE shane/devtools-linuxbrew:base-xenial
+# TO IMAGE shane/devtools-linuxbrew-base:xenial
 
 RUN echo "Installing prereqs for Linuxbrew (http://linuxbrew.sh/)" \
  && export DEBIAN_FRONTEND=noninteractive \

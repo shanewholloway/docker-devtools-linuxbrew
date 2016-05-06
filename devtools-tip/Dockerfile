@@ -1,5 +1,5 @@
-FROM shane/devtools-linuxbrew:core-xenial
-# TO IMAGE shane/devtools-linuxbrew:tip-xenial
+FROM shane/devtools-linuxbrew-core:xenial
+# TO IMAGE shane/devtools-linuxbrew-tip:xenial
 
 RUN echo "Brewing rest of devtools…" \
  && python2 -m pip install pip --upgrade \

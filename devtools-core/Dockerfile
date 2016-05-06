@@ -1,5 +1,5 @@
-FROM shane/devtools-linuxbrew:base-xenial
-# TO IMAGE shane/devtools-linuxbrew:core-xenial
+FROM shane/devtools-linuxbrew-base:xenial
+# TO IMAGE shane/devtools-linuxbrew-core:xenial
 
 RUN echo "Brewing core devtools…" \
  && brew install --build-from-source \
